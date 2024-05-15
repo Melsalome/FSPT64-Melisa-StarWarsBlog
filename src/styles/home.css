@@ -1,0 +1,20 @@
+.home_display-horizontal {
+    display: flex;
+    justify-content: flex-start;
+    align-content: space-between;
+    flex-direction: row;
+    gap: 1rem;
+    overflow-x: auto;
+}
+
+.material-symbols-outlined{
+    font-size: 20px;
+}
+
+.home_section-header{
+    width: 100%;
+    text-align: left;
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+    color: yellow;
+}

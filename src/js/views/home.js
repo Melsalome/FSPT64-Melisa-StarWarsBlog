@@ -1,15 +1,46 @@
-import React from "react";
+import React, { useEffect, useContext } from "react";
 import rigoImage from "../../img/rigo-baby.jpg";
 import "../../styles/home.css";
+import { Context } from "../store/appContext";
+import Character from "../component/Character";
+import Planet from "../component/Planet";
+import Vehicle from "../component/Vehicle";
 
-export const Home = () => (
-	<div className="text-center mt-5">
-		<h1>Hello Rigo!</h1>
-		<p>
-			<img src={rigoImage} />
-		</p>
-		<a href="#" className="btn btn-success">
-			If you see this green button, bootstrap is working
-		</a>
-	</div>
-);
+export const Home = () => {
+const {store, actions} = useContext(Context);
+
+useEffect( () => {
+	actions.getPeopleList();
+	actions.getPlanetsList();
+	actions.getVehiclesList();
+},[])
+	return (
+		<>
+		<div className="container">
+		<section>
+			<h2 className="home_section-header">CHARACTERS</h2>
+			<div className="home_display-horizontal">
+			{store.charactersList.map((character) => <Character key={character.uid} {...character}/>)}
+			</div>
+		</section>
+		<section>
+			<h2 className="home_section-header">PLANETS</h2>
+		<div className="home_display-horizontal">
+		{store.planetsList.map((planet) => <Planet key={planet.uid} {...planet}/>)}
+		</div>
+		</section>
+		<section>
+			<h2 className="home_section-header">VEHICLES</h2>
+			<div className="home_display-horizontal">
+		{store.vehiclesList.map((vehicle) => <Vehicle key={vehicle.uid} {...vehicle}/>)}
+			</div>
+		</section>
+		</div>
+		
+		
+		</>
+	)
+	
+;
+}
+	

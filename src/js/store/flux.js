@@ -1,45 +1,42 @@
+import peopleDispatcher from './dispatchers/peopleDispatcher'
+import planetsDispatcher from './dispatchers/planetsDispatcher';
+import vehiclesDispatcher from './dispatchers/vehiclesDispatcher';
+import Character from './../component/Character';
+
+
+
+
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			demo: [
-				{
-					title: "FIRST",
-					background: "white",
-					initial: "white"
-				},
-				{
-					title: "SECOND",
-					background: "white",
-					initial: "white"
-				}
-			]
+			charactersList : [],
+			planetsList: [],
+			vehiclesList: [],
 		},
 		actions: {
-			// Use getActions to call a function within a fuction
-			exampleFunction: () => {
-				getActions().changeColor(0, "green");
+			getPeopleList: async () => {
+			const charactersList = await peopleDispatcher.get();
+			const store = getStore();
+			setStore({...store, charactersList})
 			},
-			loadSomeData: () => {
-				/**
-					fetch().then().then(data => setStore({ "foo": data.bar }))
-				*/
+			getPlanetsList: async () => {
+					const planetsList = await planetsDispatcher.get();
+					const store = getStore();
+					setStore({...store, planetsList})
 			},
-			changeColor: (index, color) => {
-				//get the store
+			getVehiclesList: async () => {
+				const vehiclesList = await vehiclesDispatcher.get();
 				const store = getStore();
+				setStore({...store, vehiclesList})},
 
-				//we have to loop the entire demo array to look for the respective index
-				//and change its color
-				const demo = store.demo.map((elm, i) => {
-					if (i === index) elm.background = color;
-					return elm;
-				});
-
-				//reset the global store
-				setStore({ demo: demo });
+			getCharacterDetailed: async (characterId) => {
+				return peopleDispatcher.getById(characterId);
+	
+			}
+		
 			}
 		}
 	};
-};
+
 
 export default getState;

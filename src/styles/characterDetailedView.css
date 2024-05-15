@@ -1,0 +1,27 @@
+.character-detail{
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+    width: 100%;
+    flex-direction: column;
+}
+
+.character-detail_main-section{
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    width: 100%;
+    flex-direction: row;
+}
+
+.section-divider{
+    border-top: 3px solid #f0d20d
+}
+
+.character-detail_aspects{
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+    width: 100%;
+    flex-direction: row;
+}
