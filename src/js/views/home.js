@@ -5,6 +5,7 @@ import { Context } from "../store/appContext";
 import Character from "../component/Character";
 import Planet from "../component/Planet";
 import Vehicle from "../component/Vehicle";
+import  Navbar  from "../component/navbar";
 
 export const Home = () => {
 const {store, actions} = useContext(Context);
@@ -13,6 +14,7 @@ useEffect( () => {
 	actions.getPeopleList();
 	actions.getPlanetsList();
 	actions.getVehiclesList();
+	
 },[])
 	return (
 		<>
@@ -43,4 +45,3 @@ useEffect( () => {
 	
 ;
 }
-	

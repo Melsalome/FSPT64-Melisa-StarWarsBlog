@@ -12,6 +12,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 			charactersList : [],
 			planetsList: [],
 			vehiclesList: [],
+			favoritesList: [],
+			
 		},
 		actions: {
 			getPeopleList: async () => {
@@ -29,11 +31,33 @@ const getState = ({ getStore, getActions, setStore }) => {
 				const store = getStore();
 				setStore({...store, vehiclesList})},
 
-			getCharacterDetailed: async (characterId) => {
-				return peopleDispatcher.getById(characterId);
-	
+			getCharacterDetailed: async (characterID) => {
+				return peopleDispatcher.getById(characterID);
+			},
+
+			getPlanetDetailed: async (planetID) => {
+				return planetsDispatcher.getById(planetID);
+			},
+			
+			getVehicleDetailed: async (vehicleID) => {
+				return vehiclesDispatcher.getById(vehicleID)
+			},
+			
+			addFavorites: (name) => {
+				// const newFavorite = {
+				// 	name: name,
+				// 	id: uid,
+				// 	resource: resource
+				// }
+			const store = getStore();
+			setStore({...store, favoritesList: [...store.favoritesList,name]})
+			},
+
+			deleteFavorite: (favoriteIndex) => {
+				const store = getStore();
+				const favoritesList = store.favoritesList.filter((favorite, index) => index != favoriteIndex)
+				setStore({...store, favoritesList})
 			}
-		
 			}
 		}
 	};

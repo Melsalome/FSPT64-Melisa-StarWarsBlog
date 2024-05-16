@@ -1,10 +1,13 @@
 import React, { useContext, useEffect, useState} from "react";
 import { useParams } from "react-router";
 import { Context } from "../store/appContext";
-import CharacterDetailed from "./CharacterDetailedView";
+import Character from "../component/Character";
+import PropTypes from "prop-types";
+import '../../styles/characterDetailedView.css'
 
 const CharacterDetailedView = () => {
-  const { characterId } = useParams;
+
+  const  { characterID } = useParams();
   const { actions } = useContext(Context);
   const [characterDetailed, setCharacterDetailed] = useState({
     description: '',
@@ -18,25 +21,29 @@ const CharacterDetailedView = () => {
     },
   });
 
-  useEffect(() => {
+
+  useEffect( () => {
     const fetchData = async () => {
-        const characterDetailed = await actions.getCharacterDetailed(characterId)
+      try {
+        const characterDetailed = await actions.getCharacterDetailed(characterID);
+        console.log("characterDetailed:", characterDetailed);
         setCharacterDetailed(characterDetailed);
-        
-       
-    }
-    
-   fetchData();
-   
-   
-  }, []);
+      } catch (error) {
+        console.error("Error fetching character details:", error);
+      }
+    };
+fetchData();    
+  },[])
 
   return <>
   <div className="character-detail">
   <div className="character-detail_main-section">
-    <img src="https://i.blogs.es/1da08b/1366_2000-9-/1366_2000.jpeg" alt="character-detail-img"/>
+    <img src={'https://starwars-visualguide.com/assets/img/characters/' + (characterID)+'.jpg'} alt="character-detail-img" className="character-detail-img"/>
+    <div className="character-detail_name-section">
     <h2>{characterDetailed.properties.name}</h2>
     <p>{characterDetailed.description}</p>
+    </div>
+    
   </div>
   <hr className="section-divider"></hr>
   <div className="character-detail_aspects">
@@ -70,3 +77,7 @@ const CharacterDetailedView = () => {
   </>;
 };
 export default CharacterDetailedView;
+
+Character.propTypes = {
+	match: PropTypes.object
+};

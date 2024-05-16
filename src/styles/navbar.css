@@ -1,6 +1,15 @@
 
 .starwars-logo{
     height: 9vh;
-    width: 8vw;
+    width: 8vw;   
+    
+}
+
+.navbar{  
     display: flex;
+    justify-content: space-around;
+}
+
+.dropdown-menu{
+    background-color: yellow;
 }

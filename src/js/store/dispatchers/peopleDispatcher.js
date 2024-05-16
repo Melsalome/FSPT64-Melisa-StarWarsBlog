@@ -1,3 +1,4 @@
+import React from 'react'
 
 const peopleDispatcher = {
 	get: async () => {
@@ -15,8 +16,7 @@ const peopleDispatcher = {
                 method: 'GET',
                 headers: {'Content-Type' : 'application/json'}
             });
-            const result  = await response.json();
-            // console.log(result)
+            const  {result}  = await response.json();
             return result; 
         }
 	}

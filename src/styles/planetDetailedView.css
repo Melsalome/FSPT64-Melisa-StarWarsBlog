@@ -1,6 +1,6 @@
 
 
-.character-detail{
+.planet-detail{
     display: flex;
     justify-content: space-between;
     gap: 2rem;
@@ -8,7 +8,7 @@
     flex-direction: column;
 }
 
-.character-detail_main-section{
+.planet-detail_main-section{
     color: yellow;
     display: flex;
     gap: 1rem;
@@ -17,7 +17,7 @@
     justify-content: space-evenly;
 }
 
-.character-detail_name-section{
+.planet-detail_name-section{
     margin-top:100px;
 }
 
@@ -25,7 +25,7 @@
     border-top: 3px solid #f50c0c
 }
 
-.character-detail_aspects{
+.planet-detail_aspects{
     color: yellow;
     display: flex;
     flex-direction: row;
@@ -35,7 +35,11 @@
 }
 
 
-.character-detail-img{
+.planet-detail-img{
     width: 20vw;
     height: 50vh;
+}
+
+.tatooine{
+    height: 31vh;
 }

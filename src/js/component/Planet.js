@@ -1,22 +1,25 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { Context } from '../store/appContext';
 
 const Planet = ({name, uid}) => {
+  const notFoundImg = "https://oyster.ignimgs.com/mediawiki/apis.ign.com/star-wars-episode-7/4/4b/Tatooine-3.jpg";
+  const contentImage ='https://starwars-visualguide.com/assets/img/planets/' + (uid)+'.jpg'
+  const {actions} = useContext(Context)
   return (
     <div className="card" style={{'minWidth': '18rem'}}>
-    <img src="https://static1.srcdn.com/wordpress/wp-content/uploads/2023/10/major-star-wars-planets-future-image.jpg" className="card-img-top" alt="..."/>
+      {contentImage === 'https://starwars-visualguide.com/assets/img/planets/' + (1) +'.jpg' ? <img src="https://oyster.ignimgs.com/mediawiki/apis.ign.com/star-wars-episode-7/4/4b/Tatooine-3.jpg" className='tatooine' /> : <img src={contentImage} className="card-img-top" alt="..."/> }
+
     <div className="card-body">
       <h5 className="card-title">{name}</h5>
-      <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      <div>
+      <div className='card-buttons'>
        <Link to={`/planet_detailed/${uid}`}>
-        <a href="#" className="btn btn-primary">Learn More!</a>
+       <button>Learn More!</button>
         </Link>
-      <button type="button" className="btn btn-danger">
-      <span className="material-symbols-outlined">favorite</span>
+        <button type="button" className="btn btn-danger">
+      <span className="material-symbols-outlined" onClick={() => actions.addFavorites(name)}>favorite</span>
       </button>
       </div>
-    
       
     </div>
   </div>

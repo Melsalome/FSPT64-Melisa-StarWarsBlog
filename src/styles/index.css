@@ -1,3 +1,22 @@
+
+
 body{
-    background-color: black;
+    /* background-color: black; */
+    background-image: url(https://i.pinimg.com/originals/19/d3/ce/19d3ce640cfef5d3086784f3e8dd7296.gif);
+    
+    
+}
+
+.card-body{
+    background-color: darkgrey;
+}
+
+.card-buttons{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.yoda{
+    height: 150px;
 }
